@@ -5,4 +5,7 @@ module.exports = function(app) {
   // todoList Routes
   app.route('/')
     .get(home.get);
+
+  app.route('/healthcheck')
+    .get(home.healthcheck);
 };
