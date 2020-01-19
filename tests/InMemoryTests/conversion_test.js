@@ -1,3 +1,7 @@
+/*
+* These tests show coverage of business logic
+*/
+
 var request = require ('request-promise');
 var sinon = require('sinon');
 var database = require('../../src/api/services/database');
@@ -47,6 +51,7 @@ describe('Unit conversion', () => {
 
         // The status code is 200
         // And the data is returned
+        // And the units are now fahrenheit
         response.statusCode.should.equal(200);
         response.body.id.should.equal(id);
         response.body.time.should.equal(reading.time);

@@ -1,3 +1,7 @@
+/*
+* These tests show coverage simple data fetch and store operations
+*/
+
 var request = require ('request-promise');
 var errors = require ('request-promise/errors');
 var sinon = require('sinon');

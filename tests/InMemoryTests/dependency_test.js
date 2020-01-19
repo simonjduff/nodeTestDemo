@@ -1,3 +1,7 @@
+/*
+* These tests demonstrate stubbing out a dependency (database)
+*/
+
 var assert = require('assert');
 var request = require ('request-promise');
 var errors = require ('request-promise/errors');

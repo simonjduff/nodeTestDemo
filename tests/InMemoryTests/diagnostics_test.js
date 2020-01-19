@@ -1,3 +1,7 @@
+/*
+* These tests demonstrate a simple http request
+*/
+
 var assert = require('assert');
 var request = require ('request-promise');
 
