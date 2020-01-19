@@ -8,4 +8,7 @@ module.exports = function(app) {
 
   app.route('/healthcheck')
     .get(home.healthcheck);
+
+  app.route('/databaseCall')
+    .get(home.databaseCall);
 };

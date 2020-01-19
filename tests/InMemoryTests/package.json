@@ -1,8 +1,8 @@
 {
-  "name": "endtoendtests",
+  "name": "inmemorytests",
   "version": "1.0.0",
   "description": "",
-  "main": "healthcheck.js",
+  "main": "index.js",
   "scripts": {
     "test": "mocha *_test.js"
   },
@@ -12,6 +12,6 @@
     "mocha": "^7.0.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.5",
-    "request-promise-native": "^1.0.8"
+    "sinon": "^8.1.0"
   }
 }
