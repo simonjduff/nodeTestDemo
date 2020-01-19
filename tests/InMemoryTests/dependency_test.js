@@ -10,7 +10,6 @@ describe('Failing dependency', () => {
         var response = await request({
             uri: '/databaseCall',
             baseUrl: 'http://localhost:3000',
-            json: true,
             resolveWithFullResponse: true
         }).catch(errors.StatusCodeError, (reason) => 
             statusCode = reason.statusCode
@@ -33,7 +32,6 @@ describe('Stubbed dependency', () => {
         var response = await request({
             uri: '/databaseCall',
             baseUrl: 'http://localhost:3000',
-            json: true,
             resolveWithFullResponse: true
         });
 

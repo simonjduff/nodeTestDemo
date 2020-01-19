@@ -9,9 +9,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chai": "^4.2.0",
+    "chai-uuid": "^1.0.6",
+    "install": "^0.13.0",
     "mocha": "^7.0.0",
+    "npm": "^6.13.6",
     "request": "^2.88.0",
     "request-promise": "^4.2.5",
-    "sinon": "^8.1.0"
+    "sinon": "^8.1.0",
+    "uuid": "^3.4.0"
   }
 }

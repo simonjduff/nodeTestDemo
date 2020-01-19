@@ -7,8 +7,8 @@ describe('Healthcheck', () => {
         var response = await request({
             uri: '/healthcheck',
             baseUrl: 'http://localhost:3000',
-            resolveWithFullResponse: true,
-            json: true
+            json: true,
+            resolveWithFullResponse: true
         });
 
         assert.equal(response.statusCode, 200);
