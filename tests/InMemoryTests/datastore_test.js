@@ -1,4 +1,5 @@
 var request = require ('request-promise');
+var errors = require ('request-promise/errors');
 var sinon = require('sinon');
 var database = require('../../src/api/services/database');
 var chai = require('chai');
@@ -37,7 +38,8 @@ describe('Climate storage', () => {
             // And the data is echoed back along with a new id
             response.statusCode.should.equal(201);
             response.body.id.should.be.a.uuid('v1');
-            response.body.temp.should.equal(reading.temp);
+            response.body.temp.value.should.equal(reading.temp);
+            response.body.temp.unit.should.equal('celsius');
             response.body.time.should.equal(reading.time);
         });
     });
@@ -58,10 +60,29 @@ describe('Climate storage', () => {
             // The status code is 200
             // And the data is returned
             response.statusCode.should.equal(200);
-            console.log(`HMM ${JSON.stringify(response.body)}`);
             response.body.id.should.equal(id);
             response.body.time.should.equal('2020-01-19T15:39:45.232Z');
-            response.body.temp.should.equal(120.2);
+            response.body.temp.value.should.equal(120.2);
+            response.body.temp.unit.should.equal('celsius');
+        });
+
+        it('should respond 404 for an unknown id', async () => {
+            // Given a nonn-existant record id
+            var id = 'Definitely does not exist';
+                
+            // When I request the record
+            var statusCode;
+            var response = await request({
+                uri: `/climate/${id}`,
+                baseUrl: 'http://localhost:3000/',
+                resolveWithFullResponse: true,
+                json: true
+            }).catch(errors.StatusCodeError, (reason) => {
+                statusCode = reason.statusCode;
+            });
+
+            // The status code is 404
+            statusCode.should.equal(404);
         });
     });
     
@@ -100,7 +121,8 @@ describe('Climate storage', () => {
             response.statusCode.should.equal(200);
             response.body.id.should.equal(id);
             response.body.time.should.equal(reading.time);
-            response.body.temp.should.equal(reading.temp);
+            response.body.temp.value.should.equal(reading.temp);
+            response.body.temp.unit.should.equal('celsius');
         });
     });
     
